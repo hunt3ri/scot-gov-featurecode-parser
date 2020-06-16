@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 
 from rdflib import Graph, term
@@ -36,5 +37,11 @@ def write_geo_names_csv(filename: str):
 
 if __name__ == "__main__":
     print("Initialising Geography Register this can take circa 20 seconds")
+
+    try:
+        filename = sys.argv[1]
+    except IndexError:
+        raise ValueError("Must supply filename of csv you want to parse, eg python gen_geo_names.py test.csv")
+
     init_graph()
-    write_geo_names_csv("all_covid_deaths.csv")
+    write_geo_names_csv(filename)
