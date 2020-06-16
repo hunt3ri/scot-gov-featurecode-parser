@@ -1,6 +1,6 @@
 # scot-gov-featurecode-parser
 
-Utility to parse csv files from statistics.gov.scot which inexplicably use FeatureCodes rather than human readable geographies for each stat.  Util will add a new column with human readable official_name for each feature code.  Making the file easier to graph
+Utility to parse csv files from [statistics.gov.scot](https://statistics.gov.scot/home) which inexplicably use FeatureCodes rather than human readable geographies for each stat.  Util will add a new column with human readable official_name for each feature code.  Making the file easier to graph
 
 Util uses the [Standard Geography Register](https://statistics.gov.scot/resource?uri=http%3A%2F%2Fstatistics.gov.scot%2Fdata%2Fstandard-geography-code-register) to lookup each featurecode. 
 
