@@ -10,6 +10,7 @@ official_name_predicate = term.URIRef("http://statistics.data.gov.uk/def/statist
 
 def init_graph():
     """ Initialise the graph with latest geography codes from scot gov. """
+    print("Initialising Geography Register this can take circa 20 seconds")
     geography_codes.parse(geography_codes_register, "nt")
 
 
@@ -23,21 +24,19 @@ def write_geo_names_csv(filename: str):
     """ Parse csv file, and lookup official names for each featurecode in the file """
     pd.set_option("display.max_columns", None)
     pd.set_option("display.width", 400)
-    covid_csv = pd.read_csv(filename)
-    print(covid_csv.head())
+    stats_df = pd.read_csv(filename)
+    print(stats_df.head())
 
     # Add new official_name column and lookup each featurecode
-    for index, row in covid_csv.iterrows():
-        covid_csv.loc[index, "official_name"] = get_official_name(row["FeatureCode"])
+    for index, row in stats_df.iterrows():
+        stats_df.loc[index, "official_name"] = get_official_name(row["FeatureCode"])
 
-    print(covid_csv.head())
+    print(stats_df.head())
     part_name = filename.replace(".csv", "")
-    covid_csv.to_csv(f"{part_name}_geo_names.csv", index=False)
+    stats_df.to_csv(f"{part_name}_geo_names.csv", index=False)
 
 
 if __name__ == "__main__":
-    print("Initialising Geography Register this can take circa 20 seconds")
-
     try:
         filename = sys.argv[1]
     except IndexError:
