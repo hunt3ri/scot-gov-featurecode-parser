@@ -28,7 +28,7 @@ Util requires Python3 (most probably Python 3.6+, I developed on Python 3.8)
 
 ```python
 python -m venv ./venv
-./venv/Scripts/actvate
+./venv/Scripts/activate
 pip install -r requirements.txt
 
 ```
